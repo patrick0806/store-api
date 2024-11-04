@@ -14,8 +14,9 @@ export default () => ({
   database: {
     host: process.env.DATABASE_HOST || 'localhost',
     port: Number(process.env.DATABASE_PORT) || 5432,
-    name: process.env.DATABASE_NAME || 'postgres',
+    name: process.env.DATABASE_NAME || 'store-db',
     user: process.env.DATABASE_USER || 'postgres',
-    password: process.env.DATABASE_PASSWORD || '123456',
+    password: process.env.DATABASE_PASSWORD || '123',
+    ssl: Boolean(process.env.DATABASE_SSL) || false
   },
 });

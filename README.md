@@ -16,11 +16,11 @@ To run this project in dev mode you need to follow these steps
 ### Create a database
 
 ```bash
-docker run --name referer-postgres \
+docker run --name store-postgres \
     -p 5432:5432 \
-    -e POSTGRES_DB=referer \
+    -e POSTGRES_DB=store-db \
     -e POSTGRES_USER=postgres \
-    -e POSTGRES_PASSWORD=postgres \
+    -e POSTGRES_PASSWORD=123 \
     -d postgres:16.2-alpine
 ```
 
