@@ -14,7 +14,7 @@ export const databaseOptions: PostgresConnectionOptions = {
     synchronize: false,
     logging: ['error'],
     entities: [
-        path.join(__dirname, '..', '..', 'shared', 'entities', '*.entity.{ts,js}'),
+        path.join(__dirname, '..', '..', 'shared', 'entities', '**/*.entity.{ts,js}'),
     ],
     migrations: [path.join(__dirname, 'migrations', '*{.js,.ts}')],
     subscribers: [

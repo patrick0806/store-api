@@ -24,13 +24,13 @@ export class Order extends BaseEntity {
     @JoinColumn({ name: 'customer_id' })
     customer: Relation<Customer>;
 
-    @OneToMany(() => OrderItem, item => item.order,)
+    @OneToMany(() => OrderItem, item => item.order)
     items: Relation<OrderItem[]>;
 
-    @Column(type => OrderPayment, { prefix: false })
+    @Column(() => OrderPayment, { prefix: false })
     paymentDetails: OrderPayment;
 
-    @Column(type => OrderShipment, { prefix: false })
+    @Column(() => OrderShipment, { prefix: false })
     shipmentDetails: OrderShipment;
 
     @Column({
