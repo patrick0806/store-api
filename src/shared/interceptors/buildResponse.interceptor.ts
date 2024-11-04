@@ -40,10 +40,7 @@ export class BuildResponseInterceptor implements NestInterceptor {
           );
         }
 
-        return {
-          meta: metadata,
-          content: params,
-        };
+        return params
       }),
     );
   }
