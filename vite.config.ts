@@ -1,11 +1,19 @@
 import { resolve } from 'path';
 import swc from 'unplugin-swc';
-import { defineConfig } from 'vitest/config';
+import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
     globals: true,
     root: './',
+    coverage: {
+      provider: 'v8',
+      exclude: [
+        '**/*.entity.ts',
+        '**/*.dto.ts',
+        ...coverageConfigDefaults.exclude
+      ]
+    }
   },
   plugins: [
     // This is required to build the test files with SWC
