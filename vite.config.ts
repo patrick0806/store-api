@@ -11,6 +11,7 @@ export default defineConfig({
       exclude: [
         '**/*.entity.ts',
         '**/*.dto.ts',
+        '**/*.enum.ts',
         ...coverageConfigDefaults.exclude
       ]
     }
