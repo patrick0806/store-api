@@ -1,8 +1,9 @@
-import { Column, Entity, JoinColumn, ManyToOne, Relation } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, Relation } from "typeorm";
 import { BaseEntity } from "../base.entity";
 import { Customer } from "../customer.entity";
 import { OrderShipment } from "./orderShipment.entity";
 import { OrderPayment } from "./orderPayment.entity";
+import { OrderItem } from "./orderItem.entity";
 
 @Entity('orders')
 export class Order extends BaseEntity {
@@ -22,6 +23,9 @@ export class Order extends BaseEntity {
     })
     @JoinColumn({ name: 'customer_id' })
     customer: Relation<Customer>;
+
+    @OneToMany(() => OrderItem, item => item.order,)
+    items: Relation<OrderItem[]>;
 
     @Column(type => OrderPayment, { prefix: false })
     paymentDetails: OrderPayment;
