@@ -84,12 +84,12 @@ export class Product extends BaseEntity {
     weight?: number;
 
     @Column({
-        name: 'amount',
+        name: 'stock',
         type: 'int',
         nullable: false,
         default: 0
     })
-    quantity: number;
+    stock: number;
 
     @OneToMany(() => ProductImage, image => image.product)
     images: Relation<ProductImage[]>
