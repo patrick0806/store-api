@@ -1,6 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, Relation } from "typeorm";
 import { BaseEntity } from "../base.entity";
-import { Customer } from "../customer.entity";
 import { Product } from "../product/product.entity";
 import { Order } from "./order.entity";
 
@@ -18,6 +17,14 @@ export class OrderItem extends BaseEntity {
     })
     quantity: number;
 
+    @Column({
+        name: 'price',
+        type: 'decimal',
+        precision: 2,
+        nullable: false
+    })
+    price: number;
+
     // discount applied on each item
     // total = (price * amount) - (discount * amount)
     @Column({
@@ -30,27 +37,4 @@ export class OrderItem extends BaseEntity {
     @ManyToOne(() => Order, order => order.items)
     @JoinColumn({ name: 'order_id' })
     order: Relation<Order>;
-
-    @ManyToOne(type => Customer, {
-        nullable: false,
-        cascade: false,
-    })
-    @JoinColumn({ name: 'customer_id' })
-    customer: Relation<Customer>;
-
-    @Column({
-        name: 'approval_date',
-        type: 'timestamp',
-        unique: false,
-        nullable: true,
-    })
-    approvalDate?: Date;
-
-    @Column({
-        name: 'cancellation_date',
-        type: 'timestamp',
-        unique: false,
-        nullable: true,
-    })
-    cancellationDate?: Date;
 }
