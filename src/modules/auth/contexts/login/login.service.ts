@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { LocalStrategy } from '@modules/auth/strategies/local.strategy';
 
@@ -12,8 +12,10 @@ export class LoginService {
   constructor(private localStrategy: LocalStrategy, private jwtService: JwtService) { }
   async execute(loginData: LoginRequestDTO): Promise<any> {
     const user = await this.localStrategy.validate(loginData.email, loginData.password);
-    console.log(user instanceof User);
-    console.log(typeof user);
+    if (!user.isActive) {
+      throw new UnauthorizedException('Invalid user')
+    }
+
     return {
       accessToken: this.jwtService.sign(
         {

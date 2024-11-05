@@ -9,6 +9,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 import { UserRepository } from '@shared/repositories/user.repository';
 import { CustomerRepository } from '@shared/repositories/customer.repository';
+import { RefreshTokenController } from './contexts/refreshToken/refreshToken.controller';
+import { RefreshTokenService } from './contexts/refreshToken/refreshToken.service';
 
 @Module({
   imports: [
@@ -17,7 +19,7 @@ import { CustomerRepository } from '@shared/repositories/customer.repository';
       signOptions: { expiresIn: env().application.jwt.expiration },
     }),
   ],
-  controllers: [LoginController],
-  providers: [LoginService, LocalStrategy, JwtStrategy, UserRepository, CustomerRepository],
+  controllers: [LoginController, RefreshTokenController],
+  providers: [LoginService, RefreshTokenService, LocalStrategy, JwtStrategy, UserRepository, CustomerRepository],
 })
 export class AuthModule { }
