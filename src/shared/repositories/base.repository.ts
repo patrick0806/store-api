@@ -5,11 +5,8 @@ import { DataSource, Repository } from "typeorm";
 
 @Injectable()
 export class BaseRepository<T> implements IBaseRepository<T> {
-    private repository: Repository<T>;
 
-    constructor(private datasource: DataSource) {
-        this.repository = datasource.getRepository(T);
-    }
+    constructor(private repository: Repository<T>) { }
 
     async create(data: Partial<T>): Promise<T> {
         return this.repository.save(data);

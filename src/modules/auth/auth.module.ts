@@ -7,6 +7,8 @@ import { LoginController } from './contexts/login/login.controller';
 import { LoginService } from './contexts/login/login.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
+import { UserRepository } from '@shared/repositories/user.repository';
+import { CustomerRepository } from '@shared/repositories/customer.repository';
 
 @Module({
   imports: [
@@ -16,6 +18,6 @@ import { LocalStrategy } from './strategies/local.strategy';
     }),
   ],
   controllers: [LoginController],
-  providers: [LoginService, LocalStrategy, JwtStrategy],
+  providers: [LoginService, LocalStrategy, JwtStrategy, UserRepository, CustomerRepository],
 })
 export class AuthModule { }

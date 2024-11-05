@@ -8,7 +8,7 @@ export class ProductRepository extends BaseRepository<Product> {
     private productRepository: Repository<Product>
 
     constructor(dataSource: DataSource) {
-        super(dataSource)
+        super(dataSource.getRepository(Product))
         this.productRepository = dataSource.getRepository(Product);
     }
 } 

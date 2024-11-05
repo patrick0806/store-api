@@ -7,7 +7,11 @@ import { DataSource, Repository } from "typeorm";
 export class UserRepository extends BaseRepository<User> {
     private userRepository: Repository<User>
     constructor(datasouce: DataSource) {
-        super(datasouce)
+        super(datasouce.getRepository(User))
         this.userRepository = datasouce.getRepository(User);
+    }
+
+    async findByEmail(email: string): Promise<User | null> {
+        return this.userRepository.findOneBy({ email });
     }
 }

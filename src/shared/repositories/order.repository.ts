@@ -8,7 +8,7 @@ export class OrderRepository extends BaseRepository<Order> {
     private orderRepository: Repository<Order>
 
     constructor(dataSource: DataSource) {
-        super(dataSource)
+        super(dataSource.getRepository(Order))
         this.orderRepository = dataSource.getRepository(Order);
     }
 } 
