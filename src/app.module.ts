@@ -9,6 +9,7 @@ import { JWTAuthGuard, RolesGuard } from '@shared/guards';
 
 import { AuthModule } from '@modules/auth/auth.module';
 import { HealthModule } from '@modules/health/health.module';
+import { CustomerModule } from '@modules/customer/customer.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { HealthModule } from '@modules/health/health.module';
     TypeOrmModule.forRoot({ ...databaseOptions }),
     HealthModule,
     AuthModule,
+    CustomerModule,
     RouterModule.register([
       {
         path: 'health',
@@ -28,6 +30,10 @@ import { HealthModule } from '@modules/health/health.module';
         path: 'auth',
         module: AuthModule,
       },
+      {
+        path: 'customers',
+        module: CustomerModule,
+      }
     ]),
   ],
   controllers: [],

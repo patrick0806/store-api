@@ -100,9 +100,10 @@ Generate code, corrections, and refactorings that comply with the basic principl
     - And other controllers for secondary routes.
   - A models folder with data types.
     - DTOs validated with class-validator for inputs.
+    - DTOs need nest swagger decorators 
     - Declare simple types for outputs.
   - A services module with business logic and persistence.
-    - Entities with MikroORM for data persistence.
+    - Entities with TypeormORM for data persistence.
     - One service per entity.
 - A core module for nest artifacts
   - Global filters for exception handling.
