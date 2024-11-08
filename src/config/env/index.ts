@@ -19,4 +19,9 @@ export default () => ({
     password: process.env.DATABASE_PASSWORD || '123',
     ssl: Boolean(process.env.DATABASE_SSL) || false
   },
+  imageKit: {
+    privateKey: process.env.IMAGE_KIT_PRIVATE_KEY || '',
+    publicKey: process.env.IMAGE_KIT_PUBLIC_KEY || '',
+    url: process.env.IMAGE_KIT_URL || '',
+  }
 });

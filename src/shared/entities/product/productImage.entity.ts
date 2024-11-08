@@ -1,10 +1,10 @@
-import { Column, Entity, JoinColumn, OneToMany, Relation } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, Relation } from "typeorm";
 import { BaseEntity } from "../base.entity";
 import { Product } from "./product.entity";
 
 @Entity('product_images')
 export class ProductImage extends BaseEntity {
-    @OneToMany(() => Product, product => product.images)
+    @ManyToOne(() => Product, product => product.images)
     @JoinColumn({ name: 'product_id' })
     product: Relation<Product>;
 

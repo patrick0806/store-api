@@ -12,6 +12,10 @@ export class BaseRepository<T> implements IBaseRepository<T> {
         return this.repository.save(data);
     }
 
+    async createMultiple(data: Partial<T>[]): Promise<T> {
+        return this.repository.save(data);
+    }
+
     async update(id: number, data: Partial<T>): Promise<T> {
         await this.repository.update(id, data);
         return this.repository.findOne({ where: { id } });

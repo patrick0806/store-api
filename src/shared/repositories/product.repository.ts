@@ -12,6 +12,15 @@ export class ProductRepository extends BaseRepository<Product> {
         this.productRepository = dataSource.getRepository(Product);
     }
 
+    async findById(id: number): Promise<Product | null> {
+        return this.productRepository.findOne({
+            where: { id }, relations: {
+                category: true,
+                images: true
+            }
+        });
+    }
+
     async findBySku(sku: string): Promise<Product | null> {
         return this.productRepository.findOne({ where: { sku } });
     }
