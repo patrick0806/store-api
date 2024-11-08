@@ -11,4 +11,8 @@ export class ProductRepository extends BaseRepository<Product> {
         super(dataSource.getRepository(Product))
         this.productRepository = dataSource.getRepository(Product);
     }
+
+    async findBySku(sku: string): Promise<Product | null> {
+        return this.productRepository.findOne({ where: { sku } });
+    }
 } 

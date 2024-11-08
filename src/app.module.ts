@@ -10,6 +10,7 @@ import { JWTAuthGuard, RolesGuard } from '@shared/guards';
 import { AuthModule } from '@modules/auth/auth.module';
 import { HealthModule } from '@modules/health/health.module';
 import { CustomerModule } from '@modules/customer/customer.module';
+import { ProductModule } from '@modules/product/product.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { CustomerModule } from '@modules/customer/customer.module';
     HealthModule,
     AuthModule,
     CustomerModule,
+    ProductModule,
     RouterModule.register([
       {
         path: 'health',
@@ -33,6 +35,10 @@ import { CustomerModule } from '@modules/customer/customer.module';
       {
         path: 'customers',
         module: CustomerModule,
+      },
+      {
+        path: 'products',
+        module: ProductModule
       }
     ]),
   ],
