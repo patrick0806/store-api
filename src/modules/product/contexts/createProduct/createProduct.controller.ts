@@ -3,8 +3,8 @@ import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagg
 import { API_TAGS } from "@shared/constants";
 import { Roles } from "@shared/decorators";
 import { ApplicationRoles } from "@shared/enums";
-import { CreateProductService } from "./createProduct.service";
 import { ProductDTO } from "@shared/dtos/product/product.dto";
+import { CreateProductService } from "./createProduct.service";
 import { CreateProductRequestDTO } from "./dtos/request.dto";
 
 @Roles(ApplicationRoles.ADMIN)

@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { CustomerRepository } from "@shared/repositories/customer.repository";
 import { CreateCustomerRequestDTO } from "./dtos/request.dto";
 import { CustomerDTO } from "@shared/dtos/customer.dto";
-import { EntityInUseException } from "@shared/exceptions/EntityInUse.exception";
+import { EntityInUseException } from "@shared/exceptions/entityInUse.exception";
 import { generateHash } from "@shared/utils/hash.util";
 import { plainToClass } from "class-transformer";
 

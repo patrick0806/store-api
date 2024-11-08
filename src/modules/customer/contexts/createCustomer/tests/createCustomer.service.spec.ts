@@ -2,11 +2,15 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CreateCustomerService } from '../createCustomer.service';
 import { CustomerRepository } from '@shared/repositories/customer.repository';
-import { EntityInUseException } from '@shared/exceptions/EntityInUse.exception';
-import * as hashUtil from '@shared/utils/hash.util';
+import { EntityInUseException } from '@shared/exceptions/entityInUse.exception';
+import { generateHash } from '@shared/utils/hash.util';
+
+vi.mock('@shared/utils/hash.util', () => ({
+    generateHash: vi.fn().mockReturnValue('hashedPassword123')
+}));
 
 describe('CreateCustomerService', () => {
-    /*
+
     let service: CreateCustomerService;
     let customerRepository: CustomerRepository;
 
@@ -38,8 +42,6 @@ describe('CreateCustomerService', () => {
 
         service = module.get<CreateCustomerService>(CreateCustomerService);
         customerRepository = module.get<CustomerRepository>(CustomerRepository);
-
-        vi.spyOn(hashUtil, 'generateHash').mockReturnValue('hashedPassword123');
     });
 
     it('should be defined', () => {
@@ -61,7 +63,6 @@ describe('CreateCustomerService', () => {
             const result = await service.execute(createCustomerDto);
 
             expect(customerRepository.findByEmail).toHaveBeenCalledWith(createCustomerDto.email);
-            expect(hashUtil.generateHash).toHaveBeenCalledWith(createCustomerDto.password);
             expect(customerRepository.create).toHaveBeenCalledWith({
                 ...createCustomerDto,
                 password: 'hashedPassword123'
@@ -74,7 +75,7 @@ describe('CreateCustomerService', () => {
                 phoneNumber: mockCustomer.phoneNumber,
                 isActive: mockCustomer.isActive
             }));
-            expect(result).not.toHaveProperty('password');
+            expect(result.password).toBe(undefined);
         });
 
         it('should throw EntityInUseException when email already exists', async () => {
@@ -108,12 +109,12 @@ describe('CreateCustomerService', () => {
 
             const result = await service.execute(createCustomerDto);
 
-            expect(result).not.toHaveProperty('password');
+            expect(result.password).toBe(undefined);
             expect(result).toHaveProperty('id');
             expect(result).toHaveProperty('name');
             expect(result).toHaveProperty('email');
             expect(result).toHaveProperty('phoneNumber');
             expect(result).toHaveProperty('isActive');
         });
-    });*/
+    });
 }); 

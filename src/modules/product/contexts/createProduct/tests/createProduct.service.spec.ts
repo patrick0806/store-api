@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CreateProductService } from '../createProduct.service';
 import { ProductRepository } from '@shared/repositories/product.repository';
-import { EntityInUseException } from '@shared/exceptions/EntityInUse.exception';
+import { EntityInUseException } from '@shared/exceptions/entityInUse.exception';
 import { Product } from '@shared/entities/product/product.entity';
 
 describe('CreateProductService', () => {

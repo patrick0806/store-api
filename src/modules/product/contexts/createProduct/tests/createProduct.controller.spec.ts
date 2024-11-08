@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { EntityInUseException } from '@shared/exceptions/entityInUse.exception';
 import { CreateProductController } from '../createProduct.controller';
 import { CreateProductService } from '../createProduct.service';
-import { EntityInUseException } from '@shared/exceptions/EntityInUse.exception';
 
 describe('CreateProductController', () => {
     let controller: CreateProductController;

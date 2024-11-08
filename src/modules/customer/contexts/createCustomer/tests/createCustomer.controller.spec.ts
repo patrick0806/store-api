@@ -3,10 +3,9 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CreateCustomerController } from '../createCustomer.controller';
 import { CreateCustomerService } from '../createCustomer.service';
 import { CreateCustomerRequestDTO } from '../dtos/request.dto';
-import { EntityInUseException } from '@shared/exceptions/EntityInUse.exception';
+import { EntityInUseException } from '@shared/exceptions/entityInUse.exception';
 
 describe('CreateCustomerController', () => {
-    /*
     let controller: CreateCustomerController;
     let service: CreateCustomerService;
 
@@ -90,5 +89,5 @@ describe('CreateCustomerController', () => {
                 .rejects
                 .toThrow(error);
         });
-    });*/
+    });
 }); 
