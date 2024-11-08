@@ -24,4 +24,13 @@ export class ProductRepository extends BaseRepository<Product> {
     async findBySku(sku: string): Promise<Product | null> {
         return this.productRepository.findOne({ where: { sku } });
     }
+
+    async findByLabel(label: string): Promise<Product | null> {
+        return this.productRepository.findOne({
+            where: { label }, relations: {
+                category: true,
+                images: true
+            }
+        });
+    }
 } 

@@ -88,6 +88,12 @@ export class ProductDTO {
     category: ProductCategoryDTO;
 
     @ApiProperty({
+        description: 'Product activation status',
+        example: true
+    })
+    isActive: boolean;
+
+    @ApiProperty({
         description: 'Creation Date',
         example: new Date()
     })
