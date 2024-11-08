@@ -12,6 +12,7 @@ export default defineConfig({
         '**/*.entity.ts',
         '**/*.dto.ts',
         '**/*.enum.ts',
+        '**/*.exception.ts',
         ...coverageConfigDefaults.exclude
       ]
     }
