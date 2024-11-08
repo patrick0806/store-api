@@ -1,5 +1,5 @@
 import { Controller, Get, HttpStatus, Param, Query } from "@nestjs/common";
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { API_TAGS } from "@shared/constants";
 import { Roles } from "@shared/decorators";
 import { ApplicationRoles } from "@shared/enums";
@@ -15,6 +15,7 @@ export class ListOrdersController {
     constructor(private listOrdersService: ListOrdersService) { }
 
     @Get('/:customerId/orders')
+    @ApiBearerAuth()
     @ApiOperation({ summary: 'List customer order' })
     @ApiResponse({ status: HttpStatus.OK, type: PageResponse<OrderDTO> })
     async handler(
