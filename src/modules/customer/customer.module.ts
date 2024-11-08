@@ -4,10 +4,23 @@ import { CreateCustomerController } from "./contexts/createCustomer/createCustom
 import { CreateCustomerService } from "./contexts/createCustomer/createCustomer.service";
 import { ListCustomersController } from "./contexts/listCustomers/listCustomers.controller";
 import { ListCustomersService } from "./contexts/listCustomers/listCustomers.service";
+import { OrderRepository } from "@shared/repositories/order.repository";
+import { ListOrdersController } from "./contexts/listOrders/listOrders.controller";
+import { ListOrdersService } from "./contexts/listOrders/listOrders.service";
 
 @Module({
     imports: [],
-    controllers: [CreateCustomerController, ListCustomersController],
-    providers: [CreateCustomerService, ListCustomersService, CustomerRepository],
+    controllers: [
+        CreateCustomerController,
+        ListCustomersController,
+        ListOrdersController
+    ],
+    providers: [
+        CreateCustomerService,
+        ListCustomersService,
+        ListOrdersService,
+        CustomerRepository,
+        OrderRepository
+    ],
 })
 export class CustomerModule { }

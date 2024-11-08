@@ -12,6 +12,12 @@ export class OrderDTO {
     id: number;
 
     @ApiProperty({
+        description: 'Order code',
+        example: '9486418964'
+    })
+    code: string;
+
+    @ApiProperty({
         description: 'Order status',
         example: 'pending',
         enum: ['pending', 'processing', 'completed', 'cancelled']

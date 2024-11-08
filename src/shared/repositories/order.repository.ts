@@ -11,4 +11,34 @@ export class OrderRepository extends BaseRepository<Order> {
         super(dataSource.getRepository(Order))
         this.orderRepository = dataSource.getRepository(Order);
     }
+
+    async listOrders({ page, size, orderCode }) {
+        return this.orderRepository.findAndCount({
+            relations: {
+                items: true,
+                customer: true,
+            },
+            where: {
+                code: orderCode ? orderCode : null,
+            },
+            skip: size * page,
+            take: size
+        });
+    }
+
+    async listCustomerOrders({ page, size, customerId, paymentStatus = null }) {
+        return this.orderRepository.findAndCount({
+            relations: {
+                items: true,
+                customer: true,
+            },
+            where: {
+                customer: { id: customerId },
+                paymentDetails: { paymentStatus: paymentStatus ? paymentStatus : null }
+            },
+            order: { createdAt: 'DESC' },
+            skip: size * page,
+            take: size
+        });
+    }
 } 

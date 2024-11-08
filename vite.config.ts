@@ -9,6 +9,9 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       exclude: [
+        './src/config/**/*.ts',
+        '**/index.ts',
+        '**/*.module.ts',
         '**/*.entity.ts',
         '**/*.dto.ts',
         '**/*.enum.ts',

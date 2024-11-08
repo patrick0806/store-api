@@ -11,6 +11,7 @@ import { AuthModule } from '@modules/auth/auth.module';
 import { HealthModule } from '@modules/health/health.module';
 import { CustomerModule } from '@modules/customer/customer.module';
 import { ProductModule } from '@modules/product/product.module';
+import { OrderModule } from '@modules/order/order.module';
 
 @Module({
   imports: [
@@ -35,6 +36,10 @@ import { ProductModule } from '@modules/product/product.module';
       {
         path: 'customers',
         module: CustomerModule,
+      },
+      {
+        path: 'orders',
+        module: OrderModule
       },
       {
         path: 'products',
