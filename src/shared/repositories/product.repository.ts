@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { BaseRepository } from "./base.repository";
 import { Product } from "@shared/entities/product/product.entity";
-import { DataSource, Repository } from "typeorm";
+import { DataSource, ILike, Repository } from "typeorm";
 
 @Injectable()
 export class ProductRepository extends BaseRepository<Product> {
@@ -31,6 +31,21 @@ export class ProductRepository extends BaseRepository<Product> {
                 category: true,
                 images: true
             }
+        });
+    }
+
+    async listProducts({ page, size, name, categoryId }) {
+        return this.productRepository.findAndCount({
+            relations: {
+                category: true,
+                images: true,
+            },
+            where: {
+                name: name ? ILike(`%${name}%`) : null,
+                category: { id: categoryId ? categoryId : null }
+            },
+            skip: size * page,
+            take: size
         });
     }
 } 

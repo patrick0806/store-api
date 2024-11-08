@@ -9,18 +9,22 @@ import { ProductImageRepository } from "@shared/repositories/productImage.reposi
 import { ImageKitProvider } from "@shared/providers/ImageKit.provider";
 import { GetProductByLabelController } from "./contexts/getProductByLabel/getProductByLabel.controller";
 import { GetProductByLabelService } from "./contexts/getProductByLabel/getProductByLabel.service";
+import { ListProductsController } from "./contexts/listProducts/listProducts.controller";
+import { ListProductService } from "./contexts/listProducts/listProducts.service";
 
 @Module({
     imports: [FastifyMulterModule],
     controllers: [
         CreateProductController,
         UploadImagesController,
+        ListProductsController,
         GetProductByLabelController,
     ],
     providers: [
         CreateProductService,
         UploadImagesService,
         ProductRepository,
+        ListProductService,
         GetProductByLabelService,
         ProductImageRepository,
         {
