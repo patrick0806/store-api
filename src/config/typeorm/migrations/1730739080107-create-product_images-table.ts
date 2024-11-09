@@ -10,7 +10,7 @@ export class CreateProductImagesTable1730739080107 implements MigrationInterface
             version INT NOT NULL DEFAULT 1,
             product_id INTEGER NOT NULL REFERENCES products(id),
             image_url VARCHAR(400) NOT NULL UNIQUE,
-            order INT NOT NULL DEFAULT 0
+            "order" INT NOT NULL DEFAULT 0
           );
         `);
   }

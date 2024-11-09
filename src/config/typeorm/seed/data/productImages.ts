@@ -13,7 +13,7 @@ export const productImagesData: ProductImage[] = [
     },
     {
         id: 2,
-        imageUrl: 'https://fastly.picsum.photos/id/301/200/300.jpg',
+        imageUrl: 'https://fastly.picsum.photos/id/302/200/300.jpg',
         product: { id: 1 } as Product,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -22,7 +22,7 @@ export const productImagesData: ProductImage[] = [
     },
     {
         id: 3,
-        imageUrl: 'https://fastly.picsum.photos/id/301/200/300.jpg',
+        imageUrl: 'https://fastly.picsum.photos/id/303/200/300.jpg',
         product: { id: 2 } as Product,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -31,7 +31,7 @@ export const productImagesData: ProductImage[] = [
     },
     {
         id: 4,
-        imageUrl: 'https://fastly.picsum.photos/id/301/200/300.jpg',
+        imageUrl: 'https://fastly.picsum.photos/id/304/200/300.jpg',
         product: { id: 3 } as Product,
         createdAt: new Date(),
         updatedAt: new Date(),
