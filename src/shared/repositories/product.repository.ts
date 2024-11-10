@@ -44,7 +44,7 @@ export class ProductRepository extends BaseRepository<Product> {
                 name: name ? ILike(`%${name}%`) : null,
                 category: { id: categoryId ? categoryId : null }
             },
-            skip: size * page,
+            skip: size * (page - 1),
             take: size
         });
     }

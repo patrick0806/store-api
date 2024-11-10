@@ -21,7 +21,7 @@ export class OrderRepository extends BaseRepository<Order> {
             where: {
                 code: orderCode ? orderCode : null,
             },
-            skip: size * page,
+            skip: size * (page - 1),
             take: size
         });
     }
@@ -37,7 +37,7 @@ export class OrderRepository extends BaseRepository<Order> {
                 paymentDetails: { paymentStatus: paymentStatus ? paymentStatus : null }
             },
             order: { createdAt: 'DESC' },
-            skip: size * page,
+            skip: size * (page - 1),
             take: size
         });
     }
